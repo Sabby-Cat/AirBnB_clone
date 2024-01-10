@@ -10,6 +10,7 @@ sys.path.append(join(dirname(__file__), ".."))
 from models.base_model import *  # noqa: E402
 import unittest  # noqa: E402
 import datetime as dt  # noqa: E402
+import re  # noqa: E402
 
 
 class TestBase(unittest.TestCase):
@@ -18,11 +19,13 @@ class TestBase(unittest.TestCase):
     '''
 
     def test_init(self):
+        """ stuff """
         b = BaseModel()
         self.assertEqual(type(b), BaseModel,
                          "Type mismatch")
 
     def test_id(self):
+        """ stuff """
         list_ = []
         for _ in range(100):
             b = BaseModel()
@@ -30,12 +33,19 @@ class TestBase(unittest.TestCase):
             list_.append(b.id)
 
     def test_dates(self):
+        """ stuff """
         o = dt.datetime.now()
         b = BaseModel()
         self.assertIsNotNone(b.created_at,
                              "Timing problem")
         self.assertIsNotNone(b.updated_at,
                              "Timing problem")
+
+    def test_dates_good(self):
+        """ stuff """
+        b = BaseModel()
+        reg = re.compile("[0-9]{4}-\d{2}-\d{1,2}T\d{2}:\d{2}:\d{2}.\d{1,}")  # noqa: W605
+        self.assertRegex(b.updated_at, reg, "iso format not matched")
 
 
 if __name__ == "__main__":
