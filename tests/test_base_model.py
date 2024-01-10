@@ -44,9 +44,15 @@ class TestBase(unittest.TestCase):
     def test_dates_good(self):
         """ stuff """
         b = BaseModel()
-        reg = re.compile("[0-9]{4}-\d{2}-\d{1,2}T\d{2}:\d{2}:\d{2}.\d{1,}")  # noqa: W605
-        self.assertRegex(b.updated_at, reg, "iso format not matched")
+        reg = re.compile("[0-9]{4}-\d{2}-\d{1,2} \d{2}:\d{2}:\d{2}.\d{1,}")  # noqa: W605
+        self.assertRegex(str(b.updated_at), reg, "iso format not matched")
 
+    def test_load(self):
+        """ loader and parsing """
+        b = BaseModel()
+        b2 = BaseModel(**b.to_dict())
+        for k in b.__dict__.keys():
+            self.assertEqual(getattr(b, k), getattr(b2, k), "Problem parsing using __init__")
 
 if __name__ == "__main__":
     unittest.main()
