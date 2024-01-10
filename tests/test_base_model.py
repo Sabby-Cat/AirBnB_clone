@@ -52,7 +52,9 @@ class TestBase(unittest.TestCase):
         b = BaseModel()
         b2 = BaseModel(**b.to_dict())
         for k in b.__dict__.keys():
-            self.assertEqual(getattr(b, k), getattr(b2, k), "Problem parsing using __init__")
+            self.assertEqual(getattr(b, k), getattr(b2, k),
+                             "Problem parsing using __init__")
+
 
 if __name__ == "__main__":
     unittest.main()
