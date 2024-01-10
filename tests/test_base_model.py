@@ -4,7 +4,7 @@
 Unit testing the test_base
 """
 
-from models.base_model import *
+from .models.base_model import *
 import unittest
 import datetime as dt
 
