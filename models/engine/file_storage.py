@@ -7,6 +7,7 @@ import uuid
 from datetime import datetime
 import json
 import os
+from ..base_model import BaseModel
 
 
 class FileStorage:
@@ -33,6 +34,16 @@ class FileStorage:
 
     def reload(self):
         """ refresh everything """
-        if os.path.exists(FileStorage.__file_path):
-            FileStorage.__objects = json.loads(FileStorage.__file_path)
+        nm = FileStorage.__file_path
+        if os.path.exists(nm):
+            with open(nm, 'r', encoding='utf-8') as file:
+                loaded = json.loads(file)
+                for k,v in loaded:
+                    class_name, _id = k.split('.')
+                    if class_name == "BaseModel":
+                        obj_ = BaseModel(**v)
+                        self.__objects[k] = obj_
+                    else:
+                        print("UNKOWN CLASS ", class_name)
+                FileStorage.__objects = json.loads(nm)
 
