@@ -4,7 +4,7 @@ Base model for the project
 """
 
 import uuid
-import datetime
+from datetime import datetime
 
 
 class BaseModel:
