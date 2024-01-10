@@ -19,7 +19,8 @@ class BaseModel:
         if kwargs:
             for key, value in kwargs.items():
                 if key == 'created_at' or key == 'updated_at':
-                    setattr(self, key, datetime.strptime(value,"%Y-%m-%dT%H:%M:%S.%f"))
+                    setattr(self, key,
+                            datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f"))
                 elif key == "__class__":
                     pass
                 else:
@@ -53,5 +54,5 @@ class BaseModel:
 
 
 if __name__ == "__main__":
-    b = BaseModel() 
+    b = BaseModel()
     b2 = BaseModel(**b.to_dict())
