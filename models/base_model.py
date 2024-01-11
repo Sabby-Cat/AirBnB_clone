@@ -39,6 +39,12 @@ class BaseModel:
         '''
         print(f"[{type(self).__name__}] ({self.id}) {self.__dict__}")
 
+    def toStr(self) -> str:
+        '''
+        return stuff
+        '''
+        return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
+
     def __save__(self):
         '''
         saves the class

@@ -32,7 +32,6 @@ class FileStorage:
             data = json.dumps(dct)
             file.write(data)
             file.flush()
-            
 
     def reload(self):
         """ refresh everything """

@@ -114,10 +114,35 @@ for the id, print ** no instance found **
             """destroy: Deletes an instance based on the class name and id
 (save the change into the JSON file). Ex: $ destroy BaseModel 1234-1234-1234.
 If the class name is missing, print ** class name missing ** (ex: $ destroy)
-If the class name doesn’t exist, print ** class doesn't exist ** (ex:$ destroy MyModel)
+If the class name doesn’t exist,
+print ** class doesn'texist ** (ex:$ destroy MyModel)
 If the id is missing, print ** instance id missing ** (ex: $ destroy BaseModel)
-If the instance of the class name doesn’t exist for the id, print ** no instance found **
+If the instance of the class name doesn’t exist for
+the id, print ** no instance found **
 (ex: $ destroy BaseModel 121212)"""
+            )
+
+    def do_all(self, arg):
+        """All"""
+        if not arg:
+            print([v.toStr() for k, v in storage.all().items()])
+            return
+        args = str(arg).split(' ')
+        if args[0] == "BaseModel":
+            print([v.toStr() for k, v in storage.all().items()
+                   if str(k).startswith("BaseModel")])
+        else:
+            print("** class doesn't exist **")
+            return
+
+    def help_all(self):
+        """ help for all """
+        print(
+            """all: Prints all string representation of all instances
+based or not on the class name. Ex: $ all BaseModel or $ all.
+The printed result must be a list of strings (like the example below)
+If the class name doesn’t exist, print
+** class doesn't exist ** (ex: $ all MyModel)"""
             )
 
 
