@@ -3,10 +3,13 @@
 """
 import os
 import unittest
-from models.engine.file_storage import FileStorage
-from models.user import User
-from models import storage
 from datetime import datetime
+import sys
+from os.path import join, dirname
+sys.path.append(join(dirname(__file__), ".."))
+from models.engine.file_storage import FileStorage  # noqa: E402
+from models.user import User  # noqa: E402
+from models import storage  # noqa: E402
 
 
 class TestState(unittest.TestCase):

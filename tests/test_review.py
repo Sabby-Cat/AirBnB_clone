@@ -3,10 +3,13 @@
 """
 import os
 import unittest
-from models.review import Review
-from models import storage
 from datetime import datetime
-from models.engine.file_storage import FileStorage
+import sys
+from os.path import join, dirname
+sys.path.append(join(dirname(__file__), ".."))
+from models.review import Review  # noqa: E402
+from models import storage  # noqa: E402
+from models.engine.file_storage import FileStorage  # noqa: E402
 
 
 class TestReview(unittest.TestCase):

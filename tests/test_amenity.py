@@ -2,11 +2,14 @@
 """Unit tests for the `amenity` module.
 """
 import os
+import sys
+from os.path import join, dirname
 import unittest
-from models import storage
 from datetime import datetime
-from models.amenity import Amenity
-from models.engine.file_storage import FileStorage
+sys.path.append(join(dirname(__file__), ".."))
+from models import storage  # noqa: E402
+from models.amenity import Amenity  # noqa: E402
+from models.engine.file_storage import FileStorage  # noqa: E402
 
 
 class TestAmenity(unittest.TestCase):

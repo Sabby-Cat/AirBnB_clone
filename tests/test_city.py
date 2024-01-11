@@ -3,10 +3,13 @@
 """
 import os
 import unittest
-from models.engine.file_storage import FileStorage
-from models import storage
-from models.city import City
 from datetime import datetime
+import sys
+from os.path import join, dirname
+sys.path.append(join(dirname(__file__), ".."))
+from models.engine.file_storage import FileStorage  # noqa: E402
+from models import storage  # noqa: E402
+from models.city import City  # noqa: E402
 
 c1 = City()
 c2 = City(**c1.to_dict())
