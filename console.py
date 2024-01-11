@@ -27,7 +27,6 @@ class HBNBCommand(cmd.Cmd):
         """quit"""
         return self.do_EOF(obj)
 
-
     def do_EOF(self, obj):
         """quit"""
         print("Exiting.")
@@ -45,6 +44,15 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
             return
+
+    def help_create(self):
+        """ help for create """
+        print(
+            """Creates a class. Example usage:
+create BaseClass
+Returns id."""
+            )
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
