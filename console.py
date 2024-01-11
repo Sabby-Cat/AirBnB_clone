@@ -13,6 +13,10 @@ class HBNBCommand(cmd.Cmd):
     class to take care of command stuff
     """
 
+    intro = "Welcome to HBNB-MACRODAT command prompt."
+    prompt = "(hbnb)"
+
+
     pass
 
 
