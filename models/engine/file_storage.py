@@ -40,8 +40,8 @@ class FileStorage:
         nm = self.__file_path
         if os.path.exists(nm):
             with open(nm, 'r', encoding='utf-8') as file:
-                loaded = json.loads(file)
-                for k,v in loaded:
+                loaded = json.load(file)
+                for k,v in loaded.items():
                     class_name, _id = k.split('.')
                     if class_name == "BaseModel":
                         from ..base_model import BaseModel  # noqa: 402
@@ -49,5 +49,3 @@ class FileStorage:
                         self.__objects[k] = obj_
                     else:
                         print("UNKOWN CLASS ", class_name)
-                FileStorage.__objects = json.loads(nm)
-
