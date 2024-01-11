@@ -7,6 +7,8 @@ Main command line interface
 
 import cmd
 from typing import Any
+from models.base_model import BaseModel
+from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
@@ -15,7 +17,7 @@ class HBNBCommand(cmd.Cmd):
     """
 
     intro = "Welcome to HBNB-MACRODAT command prompt."
-    prompt = "(hbnb)"
+    prompt = "(hbnb) "
 
     def cmdloop(self, intro: Any | None = None) -> None:
         """loop function"""
@@ -31,6 +33,18 @@ class HBNBCommand(cmd.Cmd):
         print("Exiting.")
         return True
 
+    def do_create(self, arg):
+        """creates a class instance"""
+        if not arg:
+            print("** class name missing **")
+            return
+        if arg == "BaseClass":
+            b = BaseModel()
+            storage.save()
+            print(b.id)
+        else:
+            print("** class doesn't exist **")
+            return
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
