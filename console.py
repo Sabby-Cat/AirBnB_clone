@@ -7,7 +7,6 @@ Main command line interface
 
 import cmd
 from typing import Any
-from models.base_model import BaseModel
 from models import storage
 
 
@@ -52,8 +51,8 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return
-        if arg == "BaseModel":
-            b = BaseModel()
+        if arg in storage.classes():
+            b = storage.classes()[arg]()
             storage.save()
             print(b.id)
         else:
@@ -74,11 +73,11 @@ Returns id."""
             print("** class name missing **")
             return
         args = str(arg).split(' ')
-        if args[0] == "BaseModel":
+        if args[0] in storage.classes():
             if len(args) < 2:
                 print("** instance id missing **")
                 return
-            id_ = "BaseModel." + args[1]
+            id_ = args[0] + "." + args[1]
             if id_ not in storage.all():
                 print("** no instance found **")
                 return
@@ -109,11 +108,11 @@ for the id, print ** no instance found **
             print("** class name missing **")
             return
         args = str(arg).split(' ')
-        if args[0] == "BaseModel":
+        if args[0] in storage.classes():
             if len(args) < 2:
                 print("** instance id missing **")
                 return
-            id_ = "BaseModel." + args[1]
+            id_ = args[0] + "." + args[1]
             if id_ not in storage.all():
                 print("** no instance found **")
                 return
@@ -143,11 +142,11 @@ the id, print ** no instance found **
             print("** class name missing **")
             return
         args = str(arg).split(' ')
-        if args[0] == "BaseModel":
+        if args[0] in storage.classes():
             if len(args) < 2:
                 print("** instance id missing **")
                 return
-            id_ = "BaseModel." + args[1]
+            id_ = args[0] + "." + args[1]
             if id_ not in storage.all():
                 print("** no instance found **")
                 return
@@ -201,7 +200,7 @@ Only “simple” arguments can be updated: string, integer and float."""
             print([v.toStr() for k, v in storage.all().items()])
             return
         args = str(arg).split(' ')
-        if args[0] == "BaseModel":
+        if args[0] in storage.classes():
             print([v.toStr() for k, v in storage.all().items()
                    if type(v).__name__ == args[0]])
         else:

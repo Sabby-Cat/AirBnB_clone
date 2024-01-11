@@ -15,6 +15,15 @@ class FileStorage:
     __file_path = "persist.json"
     __objects = {}
 
+    def classes(self):
+        """Returns a dictionary of classes for serialization"""
+        from ..base_model import BaseModel  # noqa: 402
+        from ..user import User  # noqa: 402
+        return {
+            'BaseModel': BaseModel,
+            'User': User
+            # Add other classes if needed
+        }
     def all(self):
         """ returns the objects """
         return self.__objects
@@ -41,9 +50,8 @@ class FileStorage:
                 loaded = json.load(file)
                 for k,v in loaded.items():
                     class_name, _id = k.split('.')
-                    if class_name == "BaseModel":
-                        from ..base_model import BaseModel  # noqa: 402
-                        obj_ = BaseModel(**v)
+                    if class_name in self.classes():
+                        obj_ = self.classes()[class_name](**v)
                         self.__objects[k] = obj_
                     else:
                         print("UNKOWN CLASS ", class_name)
