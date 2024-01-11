@@ -53,6 +53,41 @@ create BaseClass
 Returns id."""
             )
 
+    def do_show(self, arg):
+        """show"""
+        if not arg:
+            print("** class name missing **")
+            return
+        args = str(arg).split(' ')
+        if args[0] == "BaseClass":
+            if len(args) < 2:
+                print("** instance id missing **")
+                return
+            id_ = "BaseClass." + args[1]
+            if id_ not in storage.all():
+                print("** no instance found **")
+                return
+            storage.all().get(id_).__str__()
+        else:
+            print("** class doesn't exist **")
+            return
+
+    def help_show(self):
+        """ help for show """
+        print(
+            """show: Prints the string representation of an instance
+based on the class name and id. Ex: $ show BaseModel 1234-1234-1234.
+If the class name is missing, print ** class name missing **
+(ex: $ show)
+If the class name doesn’t exist,
+print ** class doesn't exist ** (ex: $ show MyModel)
+If the id is missing, print **
+instance id missing ** (ex: $ show BaseModel)
+If the instance of the class name doesn’t exist
+for the id, print ** no instance found **
+(ex: $ show BaseModel 121212)"""
+            )
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

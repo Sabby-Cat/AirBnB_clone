@@ -3,7 +3,6 @@
 File storage data persist
 """
 
-import uuid
 from datetime import datetime
 import json
 import os
