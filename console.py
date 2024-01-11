@@ -122,6 +122,64 @@ the id, print ** no instance found **
 (ex: $ destroy BaseModel 121212)"""
             )
 
+    def do_update(self, arg):
+        """update"""
+        if not arg:
+            print("** class name missing **")
+            return
+        args = str(arg).split(' ')
+        if args[0] == "BaseModel":
+            if len(args) < 2:
+                print("** instance id missing **")
+                return
+            id_ = "BaseModel." + args[1]
+            if id_ not in storage.all():
+                print("** no instance found **")
+                return
+            if len(args) < 3:
+                print("** attribute name missing **")
+                return
+            if len(args) < 4:
+                print("** value missing **")
+                return
+            setattr(storage.all().get(id_), args[2], args[3])
+            storage.save()
+        else:
+            print("** class doesn't exist **")
+            return
+
+    def help_update(self):
+        """ help for update """
+        print(
+            """update: Updates an instance based on the class name and id
+by adding or updating attribute (save the change into the JSON file).
+Ex: $ update BaseModel 1234-1234-1234 email "aibnb@mail.com".
+Usage: update <class name> <id> <attribute name> "<attribute value>"
+Only one attribute can be updated at the time
+You can assume the attribute name is valid (exists for this model)
+The attribute value must be casted to the attribute type
+If the class name is missing,
+print ** class name missing ** (ex: $ update)
+If the class name doesn’t exist,
+print ** class doesn't exist ** (ex: $ update MyModel)
+If the id is missing,
+print ** instance id missing ** (ex: $ update BaseModel)
+If the instance of the class name doesn’t exist for the id,
+print ** no instance found ** (ex: $ update BaseModel 121212)
+If the attribute name is missing, print ** attribute
+name missing ** (ex: $ update BaseModel existing-id)
+If the value for the attribute name doesn’t exist,
+print ** value missing **
+(ex: $ update BaseModel existing-id first_name)
+All other arguments should not be used
+(Ex: $ update BaseModel 1234-1234-1234 email
+"aibnb@mail.com" first_name "Betty"
+=
+$ update BaseModel 1234-1234-1234 email "aibnb@mail.com")
+id, created_at and updated_at cant’ be updated.
+Only “simple” arguments can be updated: string, integer and float."""
+            )
+
     def do_all(self, arg):
         """All"""
         if not arg:
