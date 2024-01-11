@@ -38,6 +38,10 @@ class HBNBCommand(cmd.Cmd):
         """quit"""
         return self.do_EOF(obj)
 
+    def emptyline(self) -> bool:
+        """override"""
+        pass
+
     def do_EOF(self, obj):
         """quit"""
         print("Exiting.")
@@ -199,7 +203,7 @@ Only “simple” arguments can be updated: string, integer and float."""
         args = str(arg).split(' ')
         if args[0] == "BaseModel":
             print([v.toStr() for k, v in storage.all().items()
-                   if str(k).startswith("BaseModel")])
+                   if type(v).__name__ == args[0]])
         else:
             print("** class doesn't exist **")
             return
