@@ -9,10 +9,11 @@ from os.path import join, dirname, exists
 import os.path
 sys.path.append(join(dirname(__file__), ".."))
 from models.base_model import BaseModel  # noqa: E402
-from models.engine.file_storage import FileStorage
+from models.engine.file_storage import FileStorage  # noqa: E402
 import unittest  # noqa: E402
 import datetime as dt  # noqa: E402
 import re  # noqa: E402
+
 
 class TestFileStorage(unittest.TestCase):
     def setUp(self):
@@ -52,9 +53,12 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(len(all_objects), 1)
         loaded_instance = list(all_objects.values())[0]
         self.assertEqual(loaded_instance.id, base_model_instance.id)
-        self.assertEqual(loaded_instance.created_at, base_model_instance.created_at)
-        self.assertEqual(loaded_instance.updated_at, base_model_instance.updated_at)
-        self.assertEqual(loaded_instance.__class__.__name__, base_model_instance.__class__.__name__)
+        self.assertEqual(loaded_instance.created_at,
+                         base_model_instance.created_at)
+        self.assertEqual(loaded_instance.updated_at,
+                         base_model_instance.updated_at)
+        self.assertEqual(loaded_instance.__class__.__name__,
+                         base_model_instance.__class__.__name__)
 
 
 if __name__ == '__main__':
