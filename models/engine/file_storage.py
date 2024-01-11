@@ -45,6 +45,7 @@ class FileStorage:
     def reload(self):
         """ refresh everything """
         nm = self.__file_path
+        self.__objects = {}
         if os.path.exists(nm):
             with open(nm, 'r', encoding='utf-8') as file:
                 loaded = json.load(file)
