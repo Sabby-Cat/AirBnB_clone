@@ -11,6 +11,17 @@ from models.base_model import BaseModel
 from models import storage
 
 
+def cast_to_appropriate_type(obj):
+    """casts"""
+    if str(obj).startswith('"') and str(obj).endswith('"'):
+        return str(obj[1:-1])
+    if '.' in obj:
+        return float(obj)
+    if str(obj).isdigit():
+        return int(obj)
+    else:
+        raise TypeError("What value type is this ?")
+
 class HBNBCommand(cmd.Cmd):
     """
     class to take care of command stuff
@@ -142,7 +153,7 @@ the id, print ** no instance found **
             if len(args) < 4:
                 print("** value missing **")
                 return
-            setattr(storage.all().get(id_), args[2], args[3])
+            setattr(storage.all().get(id_), args[2], cast_to_appropriate_type(args[3]))
             storage.save()
         else:
             print("** class doesn't exist **")
