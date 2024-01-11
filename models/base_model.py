@@ -37,7 +37,7 @@ class BaseModel:
         '''
         print stuff
         '''
-        print(f"[{type(self)}] ({self.id}) {self.__dict__}")
+        print(f"[{type(self).__name__}] ({self.id}) {self.__dict__}")
 
     def __save__(self):
         '''

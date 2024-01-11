@@ -37,7 +37,7 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return
-        if arg == "BaseClass":
+        if arg == "BaseModel":
             b = BaseModel()
             storage.save()
             print(b.id)
@@ -49,7 +49,7 @@ class HBNBCommand(cmd.Cmd):
         """ help for create """
         print(
             """Creates a class. Example usage:
-create BaseClass
+create BaseModel
 Returns id."""
             )
 
@@ -59,11 +59,11 @@ Returns id."""
             print("** class name missing **")
             return
         args = str(arg).split(' ')
-        if args[0] == "BaseClass":
+        if args[0] == "BaseModel":
             if len(args) < 2:
                 print("** instance id missing **")
                 return
-            id_ = "BaseClass." + args[1]
+            id_ = "BaseModel." + args[1]
             if id_ not in storage.all():
                 print("** no instance found **")
                 return
@@ -86,6 +86,38 @@ instance id missing ** (ex: $ show BaseModel)
 If the instance of the class name doesn’t exist
 for the id, print ** no instance found **
 (ex: $ show BaseModel 121212)"""
+            )
+
+    def do_destroy(self, arg):
+        """destroy"""
+        if not arg:
+            print("** class name missing **")
+            return
+        args = str(arg).split(' ')
+        if args[0] == "BaseModel":
+            if len(args) < 2:
+                print("** instance id missing **")
+                return
+            id_ = "BaseModel." + args[1]
+            if id_ not in storage.all():
+                print("** no instance found **")
+                return
+            storage.all().pop(id_)
+            storage.save()
+        else:
+            print("** class doesn't exist **")
+            return
+
+    def help_destroy(self):
+        """ help for destory """
+        print(
+            """destroy: Deletes an instance based on the class name and id
+(save the change into the JSON file). Ex: $ destroy BaseModel 1234-1234-1234.
+If the class name is missing, print ** class name missing ** (ex: $ destroy)
+If the class name doesn’t exist, print ** class doesn't exist ** (ex:$ destroy MyModel)
+If the id is missing, print ** instance id missing ** (ex: $ destroy BaseModel)
+If the instance of the class name doesn’t exist for the id, print ** no instance found **
+(ex: $ destroy BaseModel 121212)"""
             )
 
 
