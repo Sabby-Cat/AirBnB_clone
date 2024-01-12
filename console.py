@@ -39,7 +39,7 @@ class HBNBCommand(cmd.Cmd):
         """ pre-command checks """
         if not line:
             return '\n'
-        pattern = re.compile(r"(\w+)\.(\w+)\(\)")
+        pattern = re.compile(r"(\w+)\.(\w+)\((\w*)\)")
         match_ = pattern.findall(line)
         if not match_:
             return super().precmd(line)
@@ -47,14 +47,30 @@ class HBNBCommand(cmd.Cmd):
         if match_[1] == "all":
             # print all
             if match_[0] not in storage.classes():
-                print("** no class **")
+                print("** class doesn't exist **")
                 return
             objs = storage.classes()[match_[0]].all()
             objs = [o.__str__() for o in objs]
             print(objs)
             return ""
+        elif match_[1] == "count":
+            if match_[0] not in storage.classes():
+                print("** class doesn't exist **")
+                return
+            objs = storage.classes()[match_[0]].all()
+            print(len(objs))
+            return ""
+        elif match_[1] == "show":
+            if match_[0] not in storage.classes():
+                print("** class doesn't exist **")
+                return
+            if len(match_) < 3:
+                print("** instance id missing **")
+                return
+            return ' '.join([match_[1], match_[0], match_[2]])
 
     def onecmd(self, line: str) -> bool:
+        """ one cmd """
         if not line:
             return
         return super().onecmd(line)
