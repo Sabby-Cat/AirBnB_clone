@@ -19,8 +19,18 @@ class FileStorage:
         """Returns a dictionary of classes for serialization"""
         from ..base_model import BaseModel  # noqa: 402
         from ..user import User  # noqa: 402
+        from ..city import City  # noqa: 402
+        from ..amenity import Amenity  # noqa: 402
+        from ..place import Place  # noqa: 402
+        from ..state import State  # noqa: 402
+        from ..review import Review  # noqa: 402
         return {
             'BaseModel': BaseModel,
+            'State': State,
+            'Review': Review,
+            'Amenity': Amenity,
+            'Place': Place,
+            'City': City,
             'User': User
             # Add other classes if needed
         }
