@@ -7,6 +7,7 @@ Main command line interface
 
 import cmd
 from typing import Any
+import re
 from models import storage
 
 
@@ -32,6 +33,30 @@ class HBNBCommand(cmd.Cmd):
     def cmdloop(self, intro: Any | None = None) -> None:
         """loop function"""
         return super().cmdloop(intro)
+
+    def precmd(self, line: str) -> str:
+        """ pre-command checks """
+        if not line:
+            return '\n'
+        pattern = re.compile(r"(\w+)\.(\w+)\(\)")
+        match_ = pattern.findall(line)
+        if not match_:
+            return super().precmd(line)
+        match_ = match_[0]
+        if match_[1] == "all":
+            # print all
+            if match_[0] not in storage.classes():
+                print("** no class **")
+                return
+            objs = (storage.classes()[match_[0]].all())
+            objs = [o.__str__() for o in objs]
+            print(objs)
+            return ""
+
+    def onecmd(self, line: str) -> bool:
+        if not line:
+            return
+        return super().onecmd(line)
 
     def do_quit(self, obj):
         """quit"""
