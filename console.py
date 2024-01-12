@@ -81,7 +81,7 @@ Returns id."""
             if id_ not in storage.all():
                 print("** no instance found **")
                 return
-            storage.all().get(id_).__str__()
+            print(storage.all().get(id_).__str__())
         else:
             print("** class doesn't exist **")
             return

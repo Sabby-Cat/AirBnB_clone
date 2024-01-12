@@ -37,7 +37,7 @@ class BaseModel:
         '''
         print stuff
         '''
-        print(f"[{type(self).__name__}] ({self.id}) {self.__dict__}")
+        return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
 
     def toStr(self) -> str:
         '''
@@ -45,7 +45,7 @@ class BaseModel:
         '''
         return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
 
-    def __save__(self):
+    def save(self):
         '''
         saves the class
         '''
