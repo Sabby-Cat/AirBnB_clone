@@ -67,8 +67,7 @@ class HBNBCommand(cmd.Cmd):
             if len(match_) < 3:
                 print("** instance id missing **")
                 return
-            match_[2] = match_[2].replace(',', ' ')
-            return ' '.join([match_[1], match_[0], match_[2]])
+            return ' '.join([match_[1], match_[0], match_[2].replace(',', '')])
 
     def onecmd(self, line: str) -> bool:
         """ one cmd """
