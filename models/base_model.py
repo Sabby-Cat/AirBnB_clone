@@ -65,8 +65,6 @@ class BaseModel:
     @classmethod
     def all(cls):
         """ return all classes """
-        # lst = [o for o in storage.__objects.values() if type(o) == type(cls)]
-        # lst = [o for o in storage.__objects]
         lst = []
         for o in storage.all().values():
             if type(o) == cls:

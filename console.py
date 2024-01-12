@@ -60,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
             objs = storage.classes()[match_[0]].all()
             print(len(objs))
             return ""
-        elif match_[1] == "show":
+        elif match_[1] in ["show", "destroy"]:
             if match_[0] not in storage.classes():
                 print("** class doesn't exist **")
                 return
