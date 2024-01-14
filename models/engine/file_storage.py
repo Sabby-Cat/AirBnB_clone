@@ -34,6 +34,7 @@ class FileStorage:
             'User': User
             # Add other classes if needed
         }
+
     def all(self):
         """ returns the objects """
         return self.__objects
@@ -45,7 +46,7 @@ class FileStorage:
     def save(self):
         """ serialization """
         dct = {}
-        for k,o in self.__objects.items():
+        for k, o in self.__objects.items():
             dct[k] = o.to_dict()
         with open(self.__file_path, 'w', encoding='utf-8') as file:
             data = json.dumps(dct)
@@ -59,7 +60,7 @@ class FileStorage:
         if os.path.exists(nm):
             with open(nm, 'r', encoding='utf-8') as file:
                 loaded = json.load(file)
-                for k,v in loaded.items():
+                for k, v in loaded.items():
                     class_name, _id = k.split('.')
                     if class_name in self.classes():
                         obj_ = self.classes()[class_name](**v)
