@@ -21,10 +21,11 @@ def cast_to_appropriate_type(obj):
         return int(obj)
     return str(obj)
 
-def nnTuple(t : tuple):
+
+def nnTuple(t: tuple):
     if t[0]:
         return t[0]
-    return t[1] 
+    return t[1]
 
 
 class HBNBCommand(cmd.Cmd):
