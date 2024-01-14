@@ -206,7 +206,7 @@ the id, print ** no instance found **
                 print("** value missing **")
                 return
             setattr(storage.all().get(id_),
-                    cast_to_appropriate_type(args[2]),
+                    str(cast_to_appropriate_type(args[2])),
                     cast_to_appropriate_type(args[3])
                     )
             storage.save()
