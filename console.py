@@ -6,6 +6,7 @@ Main command line interface
 
 
 import cmd
+from models.base_model import BaseModel
 from typing import Any
 import re
 from models import storage
