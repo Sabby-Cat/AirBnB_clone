@@ -19,8 +19,12 @@ def cast_to_appropriate_type(obj):
         return float(obj)
     if str(obj).isdigit():
         return int(obj)
-    else:
-        raise TypeError("What value type is this ?")
+    return str(obj)
+
+def nnTuple(t : tuple):
+    if t[0]:
+        return t[0]
+    return t[1] 
 
 
 class HBNBCommand(cmd.Cmd):
@@ -67,7 +71,8 @@ class HBNBCommand(cmd.Cmd):
             if len(match_) < 3:
                 print("** instance id missing **")
                 return
-            return ' '.join([match_[1], match_[0], match_[2].replace(',', '')])
+            third = ' '.join([e.strip() for e in match_[2].split(',')])
+            return ' '.join([match_[1], match_[0], third])
 
     def onecmd(self, line: str) -> bool:
         """ one cmd """
@@ -183,7 +188,9 @@ the id, print ** no instance found **
         if not arg:
             print("** class name missing **")
             return
-        args = str(arg).split(' ')
+        pattern = re.compile(r'\b(\w+)|"([^"]+)"')
+        matches = pattern.findall(arg)
+        args = [nnTuple(e) for e in matches]
         if args[0] in storage.classes():
             if len(args) < 2:
                 print("** instance id missing **")
@@ -198,8 +205,10 @@ the id, print ** no instance found **
             if len(args) < 4:
                 print("** value missing **")
                 return
-            setattr(storage.all().get(id_), args[2],
-                    cast_to_appropriate_type(args[3]))
+            setattr(storage.all().get(id_),
+                    cast_to_appropriate_type(args[2]),
+                    cast_to_appropriate_type(args[3])
+                    )
             storage.save()
         else:
             print("** class doesn't exist **")
