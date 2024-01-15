@@ -12,23 +12,6 @@ import re
 from models import storage
 
 
-def cast_to_appropriate_type(obj):
-    """casts"""
-    if str(obj).startswith('"') and str(obj).endswith('"'):
-        return str(obj[1:-1])
-    if '.' in obj:
-        return float(obj)
-    if str(obj).isdigit():
-        return int(obj)
-    return str(obj)
-
-
-def nnTuple(t: tuple):
-    if t[0]:
-        return t[0]
-    return t[1]
-
-
 class HBNBCommand(cmd.Cmd):
     """
     class to take care of command stuff
@@ -273,4 +256,18 @@ If the class name doesn’t exist, print
 
 
 if __name__ == '__main__':
+    def cast_to_appropriate_type(obj):
+        """casts"""
+        if str(obj).startswith('"') and str(obj).endswith('"'):
+            return str(obj[1:-1])
+        if '.' in obj:
+            return float(obj)
+        if str(obj).isdigit():
+            return int(obj)
+        return str(obj)
+
+    def nnTuple(t: tuple):
+        if t[0]:
+            return t[0]
+        return t[1]
     HBNBCommand().cmdloop()
