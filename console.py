@@ -2,6 +2,11 @@
 
 """
 Main command line interface
+documentation:
+Write a program called console.py that contains
+the entry point of the command interpreter:
+You must use the module cmd
+Your class definition must be: class HBNBCommand(cmd.Cmd):
 """
 
 
