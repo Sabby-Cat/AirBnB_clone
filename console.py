@@ -18,10 +18,6 @@ class HBNBCommand(cmd.Cmd):
     intro = "Welcome to HBNB-MACRODAT command prompt."
     prompt = "(hbnb) "
 
-    def cmdloop(self, intro) -> None:
-        """loop function"""
-        return super().cmdloop(intro)
-
     def precmd(self, line: str) -> str:
         """ pre-command checks """
         if not line:
