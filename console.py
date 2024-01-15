@@ -26,10 +26,6 @@ class HBNBCommand(cmd.Cmd):
         """ pre-command checks """
         if not line:
             return '\n'
-        def nnTuple(t: tuple):
-            if t[0]:
-                return t[0]
-            return t[1]
         pattern = re.compile(r"(\w+)\.(\w+)\(([^)]*)\)")
         match_ = pattern.findall(line)
         if not match_:
@@ -174,6 +170,12 @@ the id, print ** no instance found **
         if not arg:
             print("** class name missing **")
             return
+
+        def nnTuple(t: tuple):
+            if t[0]:
+                return t[0]
+            return t[1]
+
         def cast_to_appropriate_type(obj):
             """casts"""
             if str(obj).startswith('"') and str(obj).endswith('"'):
