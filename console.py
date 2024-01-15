@@ -13,6 +13,7 @@ Your class definition must be: class HBNBCommand(cmd.Cmd):
 import cmd
 import re
 from models import storage
+""" 6. Console 0.0.1 """
 
 
 class HBNBCommand(cmd.Cmd):
@@ -66,7 +67,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, obj):
         """quit"""
-        return self.do_EOF(obj)
+        quit()
 
     def emptyline(self) -> bool:
         """override"""
@@ -74,7 +75,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, obj):
         """quit"""
-        return True
+        quit()
 
     def do_create(self, arg):
         """creates a class instance"""
