@@ -70,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self) -> bool:
         """override"""
-        pass
+        return False
 
     def do_EOF(self, obj):
         """quit"""
