@@ -25,11 +25,13 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
     def do_EOF(self, obj):
-        """quit"""
+        """quit the program for whatever reason
+        """
         return True
 
     def do_quit(self, obj):
-        """quit"""
+        """quit the program for whatever reason
+        """
         return True
 
     def precmd(self, line: str) -> str:
