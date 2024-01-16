@@ -59,7 +59,6 @@ class FileStorage:
     def reload(self):
         """ refresh everything """
         nm = self.__file_path
-        self.__objects = {}
         if not os.path.exists(nm):
             return
         try:
