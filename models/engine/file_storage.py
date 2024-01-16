@@ -60,13 +60,15 @@ class FileStorage:
         """ refresh everything """
         nm = self.__file_path
         self.__objects = {}
-        if os.path.exists(nm):
+        if not os.path.exists(nm):
+            return
+        try:
             with open(nm, 'r', encoding='utf-8') as file:
                 loaded = json.load(file)
-                for k, v in loaded.items():
-                    class_name, _id = k.split('.')
-                    if class_name in self.classes():
-                        obj_ = self.classes()[class_name](**v)
-                        self.__objects[k] = obj_
-                    else:
-                        print("UNKOWN CLASS ", class_name)
+            for k, v in loaded.items():
+                class_name, _id = k.split('.')
+                if class_name in self.classes():
+                    obj_ = self.classes()[class_name](**v)
+                    self.__objects[k] = obj_
+        except:
+            pass
