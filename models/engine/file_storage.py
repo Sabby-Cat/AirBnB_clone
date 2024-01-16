@@ -59,6 +59,7 @@ class FileStorage:
     def reload(self):
         """ refresh everything """
         nm = self.__file_path
+        dct = {}
         if not os.path.exists(nm):
             return
         try:
@@ -68,6 +69,7 @@ class FileStorage:
                 class_name, _id = k.split('.')
                 if class_name in self.classes():
                     obj_ = self.classes()[class_name](**v)
-                    self.__objects[k] = obj_
+                    dct[k] = obj_
+            self.__objects = dct
         except e as Exception:
             pass
