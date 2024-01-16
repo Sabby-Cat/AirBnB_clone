@@ -70,5 +70,5 @@ class FileStorage:
                 if class_name in self.classes():
                     obj_ = self.classes()[class_name](**v)
                     self.__objects[k] = obj_
-        except:
+        except e as Exception:
             pass
