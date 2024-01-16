@@ -24,6 +24,14 @@ class HBNBCommand(cmd.Cmd):
     intro = "Welcome to HBNB-MACRODAT command prompt."
     prompt = "(hbnb) "
 
+    def do_EOF(self, obj):
+        """quit"""
+        quit()
+
+    def do_quit(self, obj):
+        """quit"""
+        return True
+
     def precmd(self, line: str) -> str:
         """ pre-command checks """
         if not line:
@@ -65,17 +73,9 @@ class HBNBCommand(cmd.Cmd):
             return
         return super().onecmd(line)
 
-    def do_quit(self, obj):
-        """quit"""
-        quit()
-
     def emptyline(self) -> bool:
         """override"""
         return False
-
-    def do_EOF(self, obj):
-        """quit"""
-        quit()
 
     def do_create(self, arg):
         """creates a class instance"""
