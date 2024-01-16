@@ -12,7 +12,6 @@ from models.base_model import BaseModel  # noqa: E402
 from models.engine.file_storage import FileStorage  # noqa: E402
 import unittest  # noqa: E402
 import datetime as dt  # noqa: E402
-import re  # noqa: E402
 
 
 class TestFileStorage(unittest.TestCase):
