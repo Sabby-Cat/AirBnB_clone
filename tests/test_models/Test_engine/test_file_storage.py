@@ -5,9 +5,14 @@ Unit testing the FileStorage
 """
 
 import sys
-from os.path import join, dirname, exists
+from os.path import join, dirname, exists, abspath
 import os.path
-sys.path.append(join(dirname(__file__), ".."))
+par = abspath(join(dirname(__file__), os.pardir))
+sys.path.append(par)
+par = abspath(join(par, os.pardir))
+sys.path.append(par)
+par = abspath(join(par, os.pardir))
+sys.path.append(par)
 from models.base_model import BaseModel  # noqa: E402
 from models.engine.file_storage import FileStorage  # noqa: E402
 import unittest  # noqa: E402
