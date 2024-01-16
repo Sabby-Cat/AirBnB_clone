@@ -12,7 +12,9 @@ class FileStorage:
     '''
     Storage class
     '''
+    # file path
     __file_path = "persist.json"
+    # objects
     __objects = {}
 
     def classes(self):
@@ -41,7 +43,8 @@ class FileStorage:
 
     def new(self, obj):
         """ appends a new file storage class """
-        self.__objects[f"{str(type(obj).__name__)}.{obj.id}"] = obj
+        if obj is not None:
+            self.__objects[f"{str(type(obj).__name__)}.{obj.id}"] = obj
 
     def save(self):
         """ serialization """
