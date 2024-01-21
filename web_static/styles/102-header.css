@@ -1,6 +1,7 @@
 /* Extra small devices (phones, 600px and down) */
 /* @media only screen and (max-width: 600px) */
-header {
+header 
+{
   z-index: 4;
   color: #fff;
   height: 3.5rem;
@@ -17,7 +18,8 @@ header {
 /* rotate burguer
 /*****************************************************************/
 
-.main_nav_burguer {
+.main_nav_burguer 
+{
   margin: .6rem 0 0 1rem;
   display: inline-block;
   font-size: 2rem;
@@ -27,13 +29,15 @@ header {
   transition: .2s ease-in-out;
 }
 
-.main_nav_burguer:hover {
+.main_nav_burguer:hover 
+{
   cursor: pointer;
   transform: rotate(0deg);
   color: silver;
   transition: .2s ease-in-out;
 }
-#main_check:checked {
+#main_check:checked 
+{
   cursor: pointer;
   transform: rotate(0deg);
   color: silver;
@@ -43,7 +47,8 @@ header {
 /*****************************************************************/
 /* popup first level menu
 /*****************************************************************/
-.nav_bar_level1 {
+.nav_bar_level1 
+{
   width: 0%;
   height: 0%;
   border-radius: 4px;
@@ -51,25 +56,30 @@ header {
   background-color: aliceblue;
 }
 /* hide checkbox */
-input {
+input 
+{
   display: none;
 }
 /* hide second level */
-.nav_bar_level1 li ul {
+.nav_bar_level1 li ul 
+{
   display: none;
 }
 
 /* hide first level */
-.nav_bar_level1 li{
+.nav_bar_level1 li
+{
   display: none;
 }
 
 /* display first level */
-#main_check:checked ~ * .nav_bar_level1 {
+#main_check:checked ~ * .nav_bar_level1 
+{
   display: block;
 }
 /* display first level title*/
-#main_check:checked ~ * .nav_bar_level1 li {
+#main_check:checked ~ * .nav_bar_level1 li 
+{
   display: block;
   font-size: 1.3rem;
   margin: .5rem;
@@ -101,27 +111,34 @@ ul li span:hover
 }
 
 /*display second level */
-#second_check:checked  + ul{
+#second_check:checked  + ul
+{
   display: block;
 }
-#third_check:checked  + ul{
+#third_check:checked  + ul
+{
   display: block;
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 600px) 
+{
 
 }
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  header {
+@media only screen and (min-width: 768px) 
+{
+  header 
+  {
       background-position: left;
       background-position-x: 1rem;
   }
-  .mobile_nav {
+  .mobile_nav 
+  {
     display: none;
   }
 }
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 992px) 
+{
 
 }

@@ -1,16 +1,21 @@
-.filters {
+.filters 
+{
   display: none;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) 
+{
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 600px) 
+{
 
 }
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  .filters {
+@media only screen and (min-width: 768px) 
+{
+  .filters 
+  {
     height: 70px;
     width: 100%;
     border: 1px solid #DDDDDD;
@@ -20,7 +25,8 @@
     box-sizing: border-box;
   }
 
-  button {
+  button 
+  {
     font-size: 18px;
     background-color: #FF5A5F;
     color: #FFF;
@@ -33,13 +39,15 @@
     align-self: center;
   }
 
-  button:hover {
+  button:hover 
+  {
     opacity: .9;
     cursor: pointer;
   }
 
   .locations,
-  .amenities {
+  .amenities 
+  {
     height: 100%;
     width: 25%;
     /* display: inline-block;
@@ -49,18 +57,21 @@
     position: relative;
   }
 
-  .locations {
+  .locations 
+  {
     border-right: 1px solid #DDDDDD;
   }
 
   .locations h3,
-  .amenities h3{
+  .amenities h3
+  {
     font-weight: 600;
     margin: 1em 0 auto 30px;
   }
 
   .locations h4,
-  .amenities h4 {
+  .amenities h4 
+  {
     font-weight: 400;
     font-size: 14px;
     margin: auto 0 auto 30px;
@@ -70,7 +81,8 @@
   /* dropdown menu */
   /* ================================================================= */
 
-  .popover {
+  .popover 
+  {
     border-radius: 4px;
     border: 1px solid #DDDDDD;
     padding: 20px 20px 20px 20px;
@@ -79,18 +91,22 @@
     margin: 17px 0 0 0;
   }
 
-  .popover ul {
+  .popover ul 
+  {
     margin-left: 10px;
   }
 
-  ul > ul {
+  ul > ul 
+  {
     padding: 0;
   }
-  .popover li{
+  .popover li
+  {
     list-style-type: none;
   }
 
-  .popover h2 {
+  .popover h2 
+  {
     font-size: 16px;
     margin: 5px auto 5px auto;
   }
@@ -98,22 +114,26 @@
   /* drop down on hover */
 
   .locations:hover,
-  .amenities:hover {
+  .amenities:hover 
+  {
     cursor: pointer;
   }
 
-  .locations:hover .popover {
+  .locations:hover .popover 
+  {
     display: block;
     cursor: pointer;
   }
 
-  .amenities:hover .popover {
+  .amenities:hover .popover 
+  {
     display: block;
     cursor: pointer;
   }
 
 }
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 992px) 
+{
 
 }
