@@ -46,9 +46,9 @@
   text-align: center;
   flex-grow: 1;
 }
-/* ************************************************** */
-/* article information */
-/* ************************************************** */
+/* ************************** */
+/* article info */
+/* ************************** */
 
 /* circle with price */
 .article_places_header {
@@ -70,9 +70,9 @@
     margin-bottom: 5px;
     transition: 0.2s ease-in-out;
 }
-/* ******************************************/
+/* *********************/
 /* ARIA
-/* ******************************************/
+/* *********************/
 .price_by_night:hover,
 .price_by_night:focus {
   background-color: antiquewhite;
@@ -87,9 +87,9 @@ article:focus {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition: 0.2s ease-in-out;
 }
-/* ******************************************/
-/* information box with icons */
-/* ******************************************/
+/* ************************/
+/* icon box info*/
+/* ************************/
 
 .information {
   width: 100%;
@@ -134,9 +134,9 @@ article:focus {
   text-align:center;
 }
 
-/*******************************************/
-/* more information */
-/*******************************************/
+/****************************/
+/* more info */
+/****************************/
 .places .amenities,
 .places .reviews {
   margin-top: 40px;
@@ -165,9 +165,9 @@ article:focus {
 {
   font-size: 12px;
 }
-/*******************************************/
+/*************************/
 /* amenities icons */
-/*******************************************/
+/*************************/
 .places .amenities ul li
 {
   display: flex;
